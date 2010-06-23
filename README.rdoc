@@ -1,9 +1,41 @@
 = ruby-debug-wrapper
 
-Description goes here.
+When you debuging Rails 3 application (which uses Bundler) and trying different ruby versions with RVM you have following problem: you should switch your Gemfile between ruby-debug and ruby-debug19 gems to work with 1.8 and 1.9 Rubies. This gem solves the problem.
+
+Follow this steps:
+
+1. Install ruby-debug gem for each ruby version you will use. For example:
+    # rvm use system
+    # gem install ruby-debug
+    # rvm use ree@rails3
+    # gem install ruby-debug -- --with-ruby-include=$rvm_path/src/ree-1.8.7-2010.02/
+    # rvm use ruby-1.9.2-head@rails3
+    # gem install ruby-debug19 -- --with-ruby-include=$rvm_path/src/ruby-1.9.2-head/
+
+2. Add to Gemfile this line
+    # gem 'ruby-debug-wrapper', :group => :development
+
+3. Run bundler
+    # bundle install
+
+4. Now you can run server with debugger and switch ruby version without changing Gemfile each time:
+    # rvm use system
+    # script/rails s -u
+    # rvm use ree@rails3
+    # script/rails s -u
+    # rvm use ruby-1.9.2-head@rails3
+    # script/rails s -u
+
+Tested with Rails 3.0.0.beta4 and MacOSX 10.6.4 only.
+
+== TODO
+
+* Tests.
+* Improve Bundler/RVM detection.
+* Automatically install ruby-debug or ruby-debug19 gem if missing.
 
 == Note on Patches/Pull Requests
- 
+
 * Fork the project.
 * Make your feature addition or bug fix.
 * Add tests for it. This is important so I don't break it in a

@@ -5,13 +5,13 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "ruby-debug-wrapper"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.summary = %Q{Wrapper which simplify debugging across different Ruby versions}
+    gem.description = %Q{Just wrapper which simplify debugging with ruby-debug over Bundler + RVM with different Ruby versions}
     gem.email = "pavel.chipiga@gmail.com"
     gem.homepage = "http://github.com/chipiga/ruby-debug-wrapper"
     gem.authors = ["Pavel Chipiga"]
-    gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
-    # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
+    # gem.add_development_dependency "ruby-debug", ">= 0"
+    # gem.add_development_dependency "ruby-debug19", ">= 0"
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError
